@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shelter: one
+  name: MyString
+  type: 
+  breed: MyString
+  size: MyString
+  gender: MyString
+  age: MyString
+  color: MyString
+  photo: MyString
+  good_with_children: false
+  good_with_dogs: false
+  good_with_cats: false
+  house_trained: false
+  vaccinated: false
+
+two:
+  shelter: two
+  name: MyString
+  type: 
+  breed: MyString
+  size: MyString
+  gender: MyString
+  age: MyString
+  color: MyString
+  photo: MyString
+  good_with_children: false
+  good_with_dogs: false
+  good_with_cats: false
+  house_trained: false
+  vaccinated: false
