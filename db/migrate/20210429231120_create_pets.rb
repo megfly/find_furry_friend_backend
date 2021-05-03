@@ -9,7 +9,7 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.string :gender
       t.string :age
       t.string :color
-      t.string :photo
+      t.string :image
       t.boolean :good_with_children
       t.boolean :good_with_dogs
       t.boolean :good_with_cats
