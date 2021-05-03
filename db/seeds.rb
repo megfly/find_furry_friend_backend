@@ -9,5 +9,5 @@
 a = Shelter.create(name: "Border Collie Rescue", street_address: "123 border st.", city: "Phoenix", state: "AZ", zipcode: "02143", 
 email: "bordercollie@gmail.com", phone: "555-555-5555")
 
-b = Pet.create(name: "Tobi", animal_type: "dog", breed: "Border Collie", size: "medium", gender: "male", age: "14", color: "black and white",
+Pet.create(name: "Tobi", animal_type: "dog", breed: "Border Collie", size: "medium", gender: "male", age: "14", color: "black and white",
 good_with_cats: true, good_with_children: true, good_with_dogs: true, house_trained: true, vaccinated: true, shelter_id: a.id)
