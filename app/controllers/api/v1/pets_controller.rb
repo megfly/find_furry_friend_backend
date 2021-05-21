@@ -1,2 +1,70 @@
 class Api::V1::PetsController < ApplicationController
+    def index 
+        shelter = Shelter.find(params[:shelter_id])
+        pets = Pet.all 
+        # or should it be pets = shelter.pets?
+        render json: @pets
+    end 
+
+    def show
+        shelter = Shelter.find(params[:shelter_id])
+        pet = Pet.find(params[:id])
+    end
+
+    def new
+        shelter = Shelter.find(params[:shelter_id])
+        pet = shelter.pets.build
+    end 
+
+    def create 
+        shelter = Shelter.find(params[:shelter_id])
+        pet = shelter.pets.new(pet_params)
+        if pet.save 
+            render json: @shelter
+        else
+            render json: {error: 'error adding pet'}
+        end 
+    end 
+
+    def edit
+        shelter = Shelter.find(params[:shelter_id])
+    end
+
+    def update 
+        shelter = Shelter.find(params[:shelter_id])
+        if pet.update(pet_params)
+            render json: @shelter
+        else
+            {error: 'Error updating animal shelter'}
+        end 
+    end
+
+    def destroy
+        shelter = Shelter.find(params[:shelter_id])
+        pet = Pet.find(pet.shelter_id)
+        pet.destroy 
+
+        render json: @shelter 
+    end
+
+    private 
+
+    def pet_params 
+        params.require(:pet).permit(
+            :shelter_id,
+            :name,
+            :animal_type,
+            :breed,
+            :size,
+            :gender,
+            :age,
+            :color,
+            :image,
+            :good_with_children,
+            :good_with_dogs,
+            :good_with_cats,
+            :house_trained,
+            :vaccinated
+        )
+    end 
 end
