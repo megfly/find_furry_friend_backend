@@ -18,3 +18,22 @@ require 'faker'
       phone: Faker::PhoneNumber.phone_number
     )
   end
+
+#   3.times do 
+#     Pet.create(
+#         # Random dog name
+#         name: Faker::Creature::Dog.name,
+
+#         # Random dog breed
+#         breed: Faker::Creature::Dog.breed,
+
+#         # Random dog age
+#         age: Faker::Creature::Dog.age,
+
+#         # Random dog gender
+#         gender: Faker::Creature::Dog.gender,
+
+#         # Random dog size
+#         size: Faker::Creature::Dog.size
+#     )
+#   end 

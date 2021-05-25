@@ -7,11 +7,10 @@ Rails.application.routes.draw do
       # get '/shelters' => 'shelters#index' 
       # get, post, patch delete
 
+      resources :pets 
+
       resources :shelters do 
         resources :pets 
-
-        resources :pets 
-        resources :shelters
         
       end 
     end 
