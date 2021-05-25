@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
       resources :shelters do 
         resources :pets 
+
+        resources :pets 
+        resources :shelters
         
       end 
     end 

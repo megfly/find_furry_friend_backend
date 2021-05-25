@@ -20,7 +20,7 @@ class Api::V1::PetsController < ApplicationController
         shelter = Shelter.find(params[:shelter_id])
         pet = shelter.pets.new(pet_params)
         if pet.save 
-            render json: @shelter
+            render json: shelter
         else
             render json: {error: 'error adding pet'}
         end 
@@ -33,7 +33,7 @@ class Api::V1::PetsController < ApplicationController
     def update 
         shelter = Shelter.find(params[:shelter_id])
         if pet.update(pet_params)
-            render json: @shelter
+            render json: shelter
         else
             {error: 'Error updating animal shelter'}
         end 
@@ -44,7 +44,7 @@ class Api::V1::PetsController < ApplicationController
         pet = Pet.find(pet.shelter_id)
         pet.destroy 
 
-        render json: @shelter 
+        render json: shelter 
     end
 
     private 

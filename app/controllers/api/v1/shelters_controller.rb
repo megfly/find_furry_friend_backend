@@ -1,24 +1,23 @@
 class Api::V1::SheltersController < ApplicationController
-    def index 
-         #we dont need instance variables because we arent passing the instances to the erb/views
-        shelters = Shelter.all 
-        render json: @shelters
-    end 
+    def index
+        shelters = Shelter.all
+        render json: shelters
+      end
 
     def show
         shelter = Shelter.find(params[:id])
-        render json: @shelter
+        render json: shelter
     end 
 
     def new
         shelter = Shelter.new
-        render json: @shelter
+        render json: shelter
     end 
 
     def create
         shelter = Shelter.new(shelter_params)
         if shelter.save
-            render json: @shelter
+            render json: shelter
         else
             render json: {error: 'Error creating animal shelter'}
         end 
@@ -31,7 +30,7 @@ class Api::V1::SheltersController < ApplicationController
     def update
         shelter = Shelter.find(params[:id])
         if shelter.update(shelter_params)
-            render json: @shelter
+            render json: shelter
         else
             {error: 'Error updating animal shelter'}
         end 
@@ -41,7 +40,7 @@ class Api::V1::SheltersController < ApplicationController
         shelter = Shelter.find(params[:id])
         shelter.destroy
 
-        render json: @shelter
+        render json: shelter
     end 
 
     private

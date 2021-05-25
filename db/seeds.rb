@@ -5,9 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
-a = Shelter.create(name: "Border Collie Rescue", street_address: "123 border st.", city: "Phoenix", state: "AZ", zipcode: "02143", 
-email: "bordercollie@gmail.com", phone: "555-555-5555")
-
-Pet.create(name: "Tobi", animal_type: "dog", breed: "Border Collie", size: "medium", gender: "male", age: "14", color: "black and white",
-good_with_cats: true, good_with_children: true, good_with_dogs: true, house_trained: true, vaccinated: true, shelter_id: a.id)
+3.times do
+    Shelter.create(
+      name: Faker::Company.name,
+      street_address: Faker::Address.street_address,
+      city: Faker::Address.city,
+      state: Faker::Address.state,
+      zipcode: Faker::Address.zip_code,
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.phone_number
+    )
+  end
