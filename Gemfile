@@ -12,6 +12,7 @@ gem 'puma', '~> 3.11'
 gem 'pry'
 gem 'active_model_serializers'
 gem 'faker'
+gem "rest-client"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
