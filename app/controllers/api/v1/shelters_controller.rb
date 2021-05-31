@@ -1,4 +1,10 @@
 class Api::V1::SheltersController < ApplicationController
+
+    require 'rest-client'
+
+    def get_shelters 
+    end 
+    
     def index
         shelters = Shelter.all
         render json: shelters
