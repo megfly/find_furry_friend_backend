@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do 
       
-      get '/shelters', to: "shelters#get_shelters"
+      # get '/shelters', to: "shelters#get_shelters"
       # get '/shelters' => 'shelters#index' 
       # get, post, patch delete
 
