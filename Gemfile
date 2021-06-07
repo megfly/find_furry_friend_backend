@@ -13,6 +13,7 @@ gem 'pry'
 gem 'active_model_serializers'
 gem 'faker'
 gem "rest-client"
+gem "petfinder"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
