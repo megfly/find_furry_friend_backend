@@ -7,33 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # require 'faker'
 
-# 3.times do
-#     Shelter.create(
-#       name: Faker::Company.name,
-#       street_address: Faker::Address.street_address,
-#       city: Faker::Address.city,
-#       state: Faker::Address.state,
-#       zipcode: Faker::Address.zip_code,
-#       email: Faker::Internet.email,
-#       phone: Faker::PhoneNumber.phone_number
-#     )
-#   end
+require_relative '../.petfinder_key'
+# binding.pry
 
-#   3.times do 
-#     Pet.create(
-#         # Random dog name
-#         name: Faker::Creature::Dog.name,
+petfinder = Petfinder::Client.new
 
-#         # Random dog breed
-#         breed: Faker::Creature::Dog.breed,
+organization = petfinder.organizations(location: '02143')
+animals = petfinder.animals(location: '02143')
 
-#         # Random dog age
-#         age: Faker::Creature::Dog.age,
 
-#         # Random dog gender
-#         gender: Faker::Creature::Dog.gender,
-
-#         # Random dog size
-#         size: Faker::Creature::Dog.size
-#     )
-#   end 
+# 5.times do 
+#     organization.each do |organization|
+#         Shelter.create([{ name: organization.name }, { phone: organization.phone }, { email: organization.email }])
+#         binding.pry
+#     end 
+# end     
