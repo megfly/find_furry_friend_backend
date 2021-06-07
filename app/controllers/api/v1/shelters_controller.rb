@@ -1,14 +1,12 @@
+
 class Api::V1::SheltersController < ApplicationController
+    # require_relative '../.petfinder_key'
+    # before_action :petfinder_api
 
-    require 'rest-client'
-    require_relative '../.petfinder_key.rb'
-
-    def get_shelters 
-        # url = ("https://api.spoonacular.com/recipes/random?number=100&apiKey=#{$api_key}")
-        response = RestClient.get "https://api.petfinder.com/v2/organizations"
-        render json: response
-
-    end 
+    # def get_shelters
+    #     shelters = petfinder.organizations(shelter_params, count: 5)
+    #     render json: shelters
+    # end 
 
     def index
         shelters = Shelter.all
@@ -59,4 +57,8 @@ class Api::V1::SheltersController < ApplicationController
     def shelter_params
         params.require(:shelter).permit(:name, :street_address, :city, :state, :zipcode, :email, :phone)
     end 
+
+    # def petfinder_api
+    #     petfinder = Petfinder::Client.new
+    # end 
 end
