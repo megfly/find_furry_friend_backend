@@ -23,3 +23,5 @@
 /config/master.key
 
 .petfinder_key.rb
+.env.rb
+.env 
