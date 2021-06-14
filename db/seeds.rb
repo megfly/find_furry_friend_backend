@@ -17,20 +17,21 @@ petfinder = Petfinder::Client.new(ENV["KEY"], ENV["SECRET"])
 
 #endpoints
 
-organization = petfinder.organizations(location: '02143')
+# organization = petfinder.organizations(location: '02143')
+organizations, pagination = petfinder.organizations({ location: '02143', limit: 5 })
 
-binding.pry 
+# binding.pry 
 
-organization.each do |org| 
+organizations.each do |org| 
     # binding.pry
     Shelter.create(
-        {name: org["name"]}, 
-        {street_address: org["address1"]}, 
-        {city: org["city"]}, 
-        {state: org["state"]}, 
-        {zipcode: org["postcode"]}, 
-        {email: org["email"]}, 
-        {phone: org["phone"]}
+        name: org["name"], 
+        street_address: org["address"]["address1"], 
+        city: org["address"]["city"], 
+        state: org["address"]["state"], 
+        zipcode: org["address"]["postcode"], 
+        email: org["email"], 
+        phone: org["phone"]
     )
 end 
 
