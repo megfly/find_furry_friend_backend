@@ -5,16 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# require 'faker'
-
-require_relative '../.petfinder_key'
-# binding.pry
-
-petfinder = Petfinder::Client.new
-
-organization = petfinder.organizations(location: '02143')
-animals = petfinder.animals(location: '02143')
-
 
 # 5.times do 
 #     organization.each do |organization|
@@ -22,3 +12,26 @@ animals = petfinder.animals(location: '02143')
 #         binding.pry
 #     end 
 # end     
+
+petfinder = Petfinder::Client.new(ENV["KEY"], ENV["SECRET"])
+
+#endpoints
+
+organization = petfinder.organizations(location: '02143')
+
+binding.pry 
+
+organization.each do |org| 
+    # binding.pry
+    Shelter.create(
+        {name: org["name"]}, 
+        {street_address: org["address1"]}, 
+        {city: org["city"]}, 
+        {state: org["state"]}, 
+        {zipcode: org["postcode"]}, 
+        {email: org["email"]}, 
+        {phone: org["phone"]}
+    )
+end 
+
+# (:name, :street_address, :city, :state, :zipcode, :email, :phone)
