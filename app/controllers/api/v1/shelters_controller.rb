@@ -1,7 +1,5 @@
 
 class Api::V1::SheltersController < ApplicationController
-    # require_relative '../.petfinder_key'
-    # before_action :petfinder_api
 
     # def get_shelters
     #     shelters = petfinder.organizations(shelter_params, count: 5)
@@ -57,8 +55,4 @@ class Api::V1::SheltersController < ApplicationController
     def shelter_params
         params.require(:shelter).permit(:name, :street_address, :city, :state, :zipcode, :email, :phone)
     end 
-
-    # def petfinder_api
-    #     petfinder = Petfinder::Client.new
-    # end 
 end

@@ -2,7 +2,6 @@ class Api::V1::PetsController < ApplicationController
     def index 
         shelter = Shelter.find(params[:shelter_id])
         pets = Pet.all 
-        # or should it be pets = shelter.pets?
         render json: @pets
     end 
 
