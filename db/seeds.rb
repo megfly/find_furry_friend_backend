@@ -9,33 +9,11 @@
 
 petfinder = Petfinder::Client.new(ENV["KEY"], ENV["SECRET"])
 
-animals, pagination = petfinder.animals(type: 'dog', location: '02143')
-
-animals.each do |animal|
-    # binding.pry 
-    Pet.create(
-        shelter_id: animal["organization_id"],
-        name: animal["name"],
-        animal_type: animal["type"],
-        breed: animal["breeds"],
-        size: animal["size"],
-        gender: animal["gender"],
-        age: animal["age"],
-        color: animal["colors"],
-        image: animal["url"],
-        good_with_children: animal["environment"]["children"],
-        good_with_dogs: animal["environment"]["dogs"],
-        good_with_cats: animal["environment"]["cats"],
-        house_trained: animal["attributes"]["house_trained"],
-        vaccinated: animal["attributes"]["shots_current"]
-    )
-end 
-
 # organization = petfinder.organizations(location: '02143')
 organizations, pagination = petfinder.organizations({ location: '02143', limit: 5 })
 
 organizations.each do |org| 
-    #  binding.pry
+     binding.pry
     Shelter.create(
         name: org["name"], 
         street_address: org["address"]["address1"], 
@@ -44,6 +22,28 @@ organizations.each do |org|
         zipcode: org["address"]["postcode"], 
         email: org["email"], 
         phone: org["phone"]
+    )
+end 
+
+animals, pagination = petfinder.animals(type: 'dog', location: '02143')
+
+animals.each do |animal|
+    # binding.pry 
+    Pet.create(
+        shelter_id: animal["organization_id"],
+        name: animal["name"],
+        animal_type: animal["type"],
+        breed: animal["breeds"]["primary"],
+        size: animal["size"],
+        gender: animal["gender"],
+        age: animal["age"],
+        color: animal["colors"]["primary"],
+        image: animal["url"],
+        good_with_children: animal["environment"]["children"],
+        good_with_dogs: animal["environment"]["dogs"],
+        good_with_cats: animal["environment"]["cats"],
+        house_trained: animal["attributes"]["house_trained"],
+        vaccinated: animal["attributes"]["shots_current"]
     )
 end 
 
