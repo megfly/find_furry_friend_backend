@@ -53,6 +53,6 @@ class Api::V1::SheltersController < ApplicationController
     private
 
     def shelter_params
-        params.require(:shelter).permit(:name, :street_address, :city, :state, :zipcode, :email, :phone)
+        params.require(:shelter).permit(:shelter_id, :name, :street_address, :city, :state, :zipcode, :email, :phone)
     end 
 end
