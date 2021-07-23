@@ -30,7 +30,7 @@ petfinder = Petfinder::Client.new(ENV["KEY"], ENV["SECRET"])
 animals, pagination = petfinder.animals(type: 'dog', location: '02143')
 
 animals.each do |animal|
-    # binding.pry 
+    binding.pry 
     Pet.create(
         shelter_id: animal["organization_id"],
         name: animal["name"],
@@ -40,7 +40,8 @@ animals.each do |animal|
         gender: animal["gender"],
         age: animal["age"],
         color: animal["colors"]["primary"],
-        image: animal["url"],
+        # image: animal["url"],
+        image: animal["photos"]["medium"],
         good_with_children: animal["environment"]["children"],
         good_with_dogs: animal["environment"]["dogs"],
         good_with_cats: animal["environment"]["cats"],
