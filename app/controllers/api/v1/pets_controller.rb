@@ -1,7 +1,7 @@
 class Api::V1::PetsController < ApplicationController
     def index 
         # binding.pry ---- maybe try to do it without pets belonging to a shelter??
-        shelter = Shelter.find_by_id(params[:shelter_id])
+        #  shelter = Shelter.find_by_id(params[:shelter_id])
         pets = Pet.all 
         render json: pets
     end 
