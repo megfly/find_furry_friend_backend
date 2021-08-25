@@ -7,13 +7,13 @@ class Api::V1::PetsController < ApplicationController
     end 
 
     def show
-        shelter = Shelter.find_by_id(params[:shelter_id])
         pet = Pet.find(params[:id])
+        render json: pet
     end
 
     def new
-        shelter = Shelter.find_by_id(params[:shelter_id])
-        pet = shelter.pets.build
+        pet = Pet.new
+        render json: pet
     end 
 
     def create 
@@ -26,12 +26,11 @@ class Api::V1::PetsController < ApplicationController
     end 
 
     def edit
-        shelter = Shelter.find_by_id(params[:shelter_id])
+        pet = Pet.find(params[:id])
     end
 
     def update 
-        shelter = Shelter.find_by_id(params[:shelter_id])
-        pet = Pet.find_by_id(params[:id])
+        pet = Pet.find(params[:id])
         if pet.update(pet_params)
             render json: pet
         else
@@ -40,11 +39,10 @@ class Api::V1::PetsController < ApplicationController
     end
 
     def destroy
-        shelter = Shelter.find(params[:shelter_id])
-        pet = Pet.find(pet.shelter_id)
-        pet.destroy 
+        pet = Pet.find(params[:id])
+        pet.destroy
 
-        render json: shelter 
+        render json: pet
     end
 
     private 
