@@ -17,7 +17,7 @@ class Api::V1::PetsController < ApplicationController
     end 
 
     def create 
-        shelter = Shelter.find(params[:shelter_id])
+        # shelter = Shelter.find(params[:shelter_id])
         pet = shelter.pets.build(pet_params)
         # # Attach an avatar to the user.
         # pet.image.attach(io: File.open("/path/to/face.jpg"), filename: "face.jpg", content_type: "image/jpeg")
