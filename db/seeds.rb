@@ -27,7 +27,7 @@ petfinder = Petfinder::Client.new(ENV["KEY"], ENV["SECRET"])
 #     )
 # end 
 
-animals, pagination = petfinder.animals(type: 'dog', location: '02143')
+animals, pagination = petfinder.animals(type: 'dog')
 
 animals.each do |animal|
     # binding.pry 
